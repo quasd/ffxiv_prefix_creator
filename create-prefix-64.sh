@@ -129,6 +129,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	#-------------------------------------------------------------------------------------#
 	#                   Create symlinks for ff14, act, xivlauncher and texTools                   #
 	#-------------------------------------------------------------------------------------#
+	mkdir -p "$shared_ff14_path"
 	ln -T -s "$shared_ff14_path" "$WINEPREFIX/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn"
 	ln -T -s "$shared_act_path" "$WINEPREFIX/drive_c/Advanced Combat Tracker"
 	mkdir -p "$shared_launcher_path"
@@ -143,7 +144,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	if [ ! -z "${PROTON_PATH+x}" ]; then
 		ln -T -s "/home/$USER/Documents/" "$WINEPREFIX/drive_c/users/steamuser/Documents"
 	else
-		ln -T -s "/home/$USER/Documents/" "$WINEPREFIX/drive_c/users/eki/Documents"
+		ln -T -s "/home/$USER/Documents/" "$WINEPREFIX/drive_c/users/$USER/Documents"
 	fi
 	#-------------------------------------------------------------------------------------#
 
