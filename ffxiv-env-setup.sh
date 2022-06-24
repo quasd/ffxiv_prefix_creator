@@ -37,7 +37,7 @@ export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/lutris-fshack-7
 #export PROTON_PATH="/usr/share/steam/compatibilitytools.d/proton-ge-custom"
 #export LUTRIS_PATH="SYSTEM"
 #-------------------------------------------------------------------------------------#
-if [ -z "${LUTRIS_PATH+x}" ]; then
+if [ ! -z "${LUTRIS_PATH+x}" ]; then
 	if [ ! -f "$LUTRIS_PATH" ]; then
 		echo "First install relevant runner from lutris for $LUTRIS_PATH"
 		exit 1
