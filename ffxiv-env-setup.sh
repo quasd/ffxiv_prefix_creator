@@ -38,7 +38,7 @@ export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/lutris-fshack-7
 #export LUTRIS_PATH="SYSTEM"
 #-------------------------------------------------------------------------------------#
 if [ ! -z "${LUTRIS_PATH+x}" ]; then
-	if [ ! -f "$LUTRIS_PATH" ]; then
+	if [ ! -d "$LUTRIS_PATH" ]; then
 		echo "First install relevant runner from lutris for $LUTRIS_PATH"
 		exit 1
 	fi
