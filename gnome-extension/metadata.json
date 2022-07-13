@@ -1,0 +1,10 @@
+{
+	"name": "Move & Resize",
+	"description": "Move and resize windows",
+	"uuid": "move-resize@orzun",
+	"shell-version": [
+		"41",
+		"42",
+		"43"
+	]
+}

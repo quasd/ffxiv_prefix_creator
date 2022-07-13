@@ -1,6 +1,7 @@
 #!/bin/bash
-
-cd "$(dirname "$0")"
+startDir=$(dirname "$0" | xargs readlink -f)
+echo "StarDir:$startDir"
+cd "$startDir"
 . ./ffxiv-env-setup.sh
 
 cd $WINEPREFIX
@@ -14,6 +15,28 @@ export actlauncher="$ACTFOLDER/Advanced Combat Tracker.exe"
 echo "Running: $WINE $xivlauncher"
 ${WINE}64 "$xivlauncher"
 
-echo "Running $actlauncher"
-${WINE}64 "$actlauncher"
+kill $(ps aux |grep electron |grep overlay | awk '{print $2}') 2> /dev/null
+kill $(ps aux |grep "Advanced Combat Tracker.exe" | awk '{print $2}') 2> /dev/null
 
+echo "Running $actlauncher"
+wine64 "$actlauncher"&
+
+sleep 2
+
+cd "$startDir"
+if [ "$enable_kagerou" == "yes" ]; then
+	electron ./ --overlay=kagerou&
+fi
+if [ "$enable_killcount" == "yes" ]; then
+	electron ./ --overlay=counter&
+fi
+
+if [ "$enable_gnome_window_moving" == "yes" ]; then
+	sleep 2
+	if [ "$enable_kagerou" == "yes" ]; then
+		gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/Extensions/MoveResize --method org.gnome.Shell.Extensions.MoveResize.Call "'kagerou overlay'" 1 0 150 400 400
+	fi
+	if [ "$enable_killcount" == "yes" ]; then
+		gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/Extensions/MoveResize --method org.gnome.Shell.Extensions.MoveResize.Call "'FFXIV Kill Counter'" 1 0 550 400 400
+	fi
+fi

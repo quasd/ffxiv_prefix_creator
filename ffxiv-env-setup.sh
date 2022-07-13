@@ -1,42 +1,6 @@
 #!/bin/bash
-
-#-------------------------------------------------------------------------------------#
-#                                          PATHS                                              #
-#-------------------------------------------------------------------------------------#
-export WINEPREFIX="/home/$USER/games/ff14_reinstall_v10"
-#export WINEPREFIX="/home/$USER/games/ff14_reinstall_v10"
-export shared_data_path="/home/$USER/games/ff14_data2"
-#-------------------------------------------------------------------------------------#
-
-#-------------------------------------------------------------------------------------#
-#                                          DXVK/graphic setings                               #
-#-------------------------------------------------------------------------------------#
-export dxvk_version="1.10.1"
-export DXVK=1
-export WINEFSYNC=1
-export DXVK_HUD=fps,frametimes,gpuload,version
-export DXVK_LOG_LEVEL="none"
-#-------------------------------------------------------------------------------------#
-
-#-------------------------------------------------------------------------------------#
-#                            Wine verobisty and dlloverrides                                   #
-#-------------------------------------------------------------------------------------#
-export WINEDEBUG=-all
-#export WINEDEBUG=warn+all
-#export WINEDLLOVERRIDES="mscoree=n,d3d10core=n,d3d11=n,d3d12=n,d3d9=n,dxgi=n,dssenh=n" #  ,ntdll=n
-export WINEARCH=win64
-#-------------------------------------------------------------------------------------#
-
-#-------------------------------------------------------------------------------------#
-#      Select one from below, if all are commented out, system wine will be used              #
-#-------------------------------------------------------------------------------------#
-export ACTFOLDER="$WINEPREFIX/drive_c/Advanced Combat Tracker"
-export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/lutris-fshack-7.2-x86_64"
-#export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/wine-7.11-staging-amd64"
-#export PROTON_PATH="/usr/share/steam/compatibilitytools.d/proton/dist/"
-#export PROTON_PATH="/usr/share/steam/compatibilitytools.d/proton-ge-custom"
-#export LUTRIS_PATH="SYSTEM"
-#-------------------------------------------------------------------------------------#
+cd "$(dirname "$0")"
+. ./settings.sh
 if [ ! -z "${LUTRIS_PATH+x}" ]; then
 	if [ ! -d "$LUTRIS_PATH" ]; then
 		echo "First install relevant runner from lutris for $LUTRIS_PATH"

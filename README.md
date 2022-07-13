@@ -3,6 +3,10 @@
 Some bits based on https://github.com/valarnin/ffxiv-tools/tree/lutris-xivlauncher
 Modified setup_dxvk.sh from https://github.com/doitsujin/dxvk
 
+Gnome extension by orzun https://gist.github.com/tuberry/dc651e69d9b7044359d25f1493ee0b39
+changed to work by application window name instead of vmname
+
+
 # Dependencies
 
 - winetricks (If you run in to any problems with winetricks please run sudo winetricks --self-update )
