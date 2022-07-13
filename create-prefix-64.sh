@@ -164,6 +164,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	#-------------------------------------------------------------------------------------#
 	#                            Initialize prefix                                                #
 	#-------------------------------------------------------------------------------------#
+	read -p "Start install y/n :" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		echo "Starting"
+	else
+		exit 1
+	fi
 	if [ ! -z "${LUTRIS_PATH+x}" ];then
 		echo "Initialize with lutris wine"
 		which wineboot
@@ -205,9 +211,14 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	cp setup_dxvk.sh "$shared_data_path/dxvk-$dxvk_version/setup_dxvk.sh"
 	"$shared_data_path/dxvk-$dxvk_version/setup_dxvk.sh" install
 
-	echo "Launching FFXIVQuickLauncher installer"
-	echo "REMEBER TO SET DALAMUD TO LEGACY MODE"
-	wine "$shared_data_path/Setup.exe"
+	if [ -f "$shared_launcher_path/XIVLauncher.exe" ]; then
+		export xivlauncher="$WINEPREFIX/drive_c/users/$USER/AppData/Local/XIVLauncher/XIVLauncher.exe"
+		wine64 "$xivlauncher"
+	else
+		echo "Launching FFXIVQuickLauncher installer"
+		echo "REMEBER TO SET DALAMUD TO LEGACY MODE"
+		wine "$shared_data_path/Setup.exe"
+	fi
 else
 	echo "Doing nothing"
 fi
