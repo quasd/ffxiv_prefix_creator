@@ -12,13 +12,13 @@ else
 fi
 export actlauncher="$ACTFOLDER/Advanced Combat Tracker.exe"
 
-echo "Running: $WINE $xivlauncher"
-${WINE}64 "$xivlauncher"
+echo "Running: wine64 $xivlauncher"
+wine64 "$xivlauncher"
 
 kill $(ps aux |grep electron |grep overlay | awk '{print $2}') 2> /dev/null
 kill $(ps aux |grep "Advanced Combat Tracker.exe" | awk '{print $2}') 2> /dev/null
 
-echo "Running $actlauncher"
+echo "Running wine64: $actlauncher"
 wine64 "$actlauncher"&
 
 sleep 30
