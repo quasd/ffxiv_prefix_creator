@@ -21,7 +21,7 @@ kill $(ps aux |grep "Advanced Combat Tracker.exe" | awk '{print $2}') 2> /dev/nu
 echo "Running $actlauncher"
 wine64 "$actlauncher"&
 
-sleep 2
+sleep 15
 
 cd "$startDir"
 if [ "$enable_kagerou" == "yes" ]; then
@@ -32,7 +32,7 @@ if [ "$enable_killcount" == "yes" ]; then
 fi
 
 if [ "$enable_gnome_window_moving" == "yes" ]; then
-	sleep 2
+	sleep 15
 	if [ "$enable_kagerou" == "yes" ]; then
 		gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/Extensions/MoveResize --method org.gnome.Shell.Extensions.MoveResize.Call "'kagerou overlay'" 1 0 150 400 400
 	fi
