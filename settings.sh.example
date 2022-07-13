@@ -10,7 +10,7 @@ export shared_data_path="/home/$USER/games/ff14_data2"
 #-------------------------------------------------------------------------------------#
 #                                          DXVK/graphic setings                               #
 #-------------------------------------------------------------------------------------#
-export dxvk_version="1.10.1"
+export dxvk_version="1.10.2"
 export DXVK=1
 export WINEFSYNC=1
 export DXVK_HUD=fps,frametimes,gpuload,version
