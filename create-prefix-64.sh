@@ -56,15 +56,23 @@ if [ ! -f "$shared_anamnesis_path/Anamnesis.exe" ]; then
 
 
 fi
-
-if [ ! -f "$shared_TexTools_path/dxvk-$dxvk_version.tar.gz" ]; then
-	echo "$shared_TexTools_path/dxvk-$dxvk_version.tar.gz, installing it."
-	if [ ! -f "$shared_TexTools_path/dxvk-$dxvk_version.tar.gz" ]; then
-		wget -O "$shared_data_path/dxvk-$dxvk_version.tar.gz" -q "https://github.com/doitsujin/dxvk/releases/download/v$dxvk_version/dxvk-$dxvk_version.tar.gz"
+if [ "$DXVK_ASYNC" == "1" ]; then
+	if [ ! -f "$shared_data_path/dxvk-async-$dxvk_version.tar.gz" ]; then
+		echo "$shared_data_path/dxvk-async-$dxvk_version.tar.gz, not found, installing it."
+		if [ ! -f "$shared_data_path/dxvk-async-$dxvk_version.tar.gz" ]; then
+			wget -O "$shared_data_path/dxvk-async-$dxvk_version.tar.gz" -q "https://github.com/Sporif/dxvk-async/releases/download/$dxvk_version/dxvk-async-$dxvk_version.tar.gz"
+		fi
+		tar xzvf "$shared_data_path/dxvk-async-$dxvk_version.tar.gz" -C "$shared_data_path"
 	fi
-	tar xzvf "$shared_data_path/dxvk-$dxvk_version.tar.gz" -C "$shared_data_path"
+else 
+	if [ ! -f "$shared_data_path/dxvk-$dxvk_version.tar.gz" ]; then
+		echo "$shared_data_path/dxvk-$dxvk_version.tar.gz, installing it."
+		if [ ! -f "$shared_data_path/dxvk-$dxvk_version.tar.gz" ]; then
+			wget -O "$shared_data_path/dxvk-$dxvk_version.tar.gz" -q "https://github.com/doitsujin/dxvk/releases/download/v$dxvk_version/dxvk-$dxvk_version.tar.gz"
+		fi
+		tar xzvf "$shared_data_path/dxvk-$dxvk_version.tar.gz" -C "$shared_data_path"
+	fi
 fi
-
 if [ ! -d "$shared_act_settings_path" ]; then 
 	echo "$shared_act_settings_path not found, creating empty folder for it."
 	mkdir -p "$shared_act_settings_path"
@@ -207,8 +215,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo setcap cap_net_raw,cap_net_admin,cap_sys_ptrace=eip "$WINEDIR/wineserver"
 
 	echo "Installing DXVK"
-	cp setup_dxvk.sh "$shared_data_path/dxvk-$dxvk_version/setup_dxvk.sh"
-	"$shared_data_path/dxvk-$dxvk_version/setup_dxvk.sh" install
+	if [ "$DXVK_ASYNC" == "1" ]; then
+		cp setup_dxvk.sh "$shared_data_path/dxvk-async-$dxvk_version/setup_dxvk.sh"
+		chmod +x "$shared_data_path/dxvk-async-$dxvk_version/setup_dxvk.sh"
+		"$shared_data_path/dxvk-async-$dxvk_version/setup_dxvk.sh" install
+	else
+		cp setup_dxvk.sh "$shared_data_path/dxvk-$dxvk_version/setup_dxvk.sh"
+		"$shared_data_path/dxvk-$dxvk_version/setup_dxvk.sh" install
+	fi
+
 
 	if [ -f "$shared_launcher_path/XIVLauncher.exe" ]; then
 		export xivlauncher="$WINEPREFIX/drive_c/users/$USER/AppData/Local/XIVLauncher/XIVLauncher.exe"
