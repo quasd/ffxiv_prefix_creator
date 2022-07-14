@@ -33,6 +33,6 @@ export ACTFOLDER="$WINEPREFIX/drive_c/Advanced Combat Tracker"
 export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/lutris-GE-Proton7-10-x86_64"
 #-------------------------------------------------------------------------------------#
 # This required wayland + gnome extension found in gnome-extension folder. Read extension.js header for instructions
-export enable_gnome_window_moving="yes" # yes/no
+export enable_gnome_window_moving="no" # yes/no
 export enable_kagerou="yes" # yes/no
 export enable_killcount="no" # yes/no
