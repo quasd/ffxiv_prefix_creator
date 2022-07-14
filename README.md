@@ -1,5 +1,7 @@
 # ffxiv_prefix_creator
 
+Something I put together to allow me to quickly move between different wine/proton versions or recover from borked prefix. 
+
 Some bits based on https://github.com/valarnin/ffxiv-tools/tree/lutris-xivlauncher
 Modified setup_dxvk.sh from https://github.com/doitsujin/dxvk
 
