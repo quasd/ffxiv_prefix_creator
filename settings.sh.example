@@ -30,14 +30,7 @@ export WINEARCH=win64
 #      Select one from below, if all are commented out, system wine will be used              #
 #-------------------------------------------------------------------------------------#
 export ACTFOLDER="$WINEPREFIX/drive_c/Advanced Combat Tracker"
-#export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/lutris-GE-Proton7-20-x86_64"
-export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/lutris-ge-6.21-1-x86_64"
-#export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/lutris-GE-Proton7-20-x86_64"
-#export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/lutris-fshack-7.2-x86_64_oma"
-#export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/wine-7.11-staging-amd64"
-#export PROTON_PATH="/usr/share/steam/compatibilitytools.d/proton/dist/"
-#export PROTON_PATH="/usr/share/steam/compatibilitytools.d/proton-ge-custom"
-#export LUTRIS_PATH="SYSTEM"
+export LUTRIS_PATH="/home/$USER/.local/share/lutris/runners/wine/lutris-GE-Proton7-10-x86_64"
 #-------------------------------------------------------------------------------------#
 # This required wayland + gnome extension found in gnome-extension folder. Read extension.js header for instructions
 export enable_gnome_window_moving="yes" # yes/no
