@@ -17,11 +17,17 @@ changed to work by application window name instead of wmclass
 
 # Usage
 
-- Update vars in ffxiv-env-setup.sh.
+```
+git clone git@github.com:quasd/ffxiv_prefix_creator.git
+cd ffxiv_prefix_creator
+cp settings.sh.example settings.sh
+vim settings.sh
+```
+- Update vars.
 	- WINEPREFIX 
 		- Path should not exist before running these scripts.
 	- shared_data_path
-		- Copy your "FINAL FANTASY XIV - A Realm Reborn" game folder to this path
+		- Copy/link your "FINAL FANTASY XIV - A Realm Reborn" game folder to this path
 
 - run ( will take few minutes )
 YOU MUST SET DALAMUD TO LEGACY MODE IN xivlauncher when it launches!
