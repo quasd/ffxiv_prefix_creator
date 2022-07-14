@@ -48,13 +48,12 @@ fi
 
 if [ ! -f "$shared_anamnesis_path/Anamnesis.exe" ]; then
 	echo "$shared_anamnesis_path/Anamnesis.exe"
-	anamnesis_version="2022-05-01"
+	anamnesis_version="2022-07-13"
 	if [ ! -f "$shared_data_path/$anamnesis_version.zip" ]; then
-		wget -P "$shared_data_path" -q "https://github.com/imchillin/Anamnesis/releases/download/v$anamnesis_version/$anamnesis_version.zip"
+		wget -P "$shared_data_path" -q "https://github.com/imchillin/Anamnesis/releases/download/v$anamnesis_version/Anamnesis.zip"
 	fi
-	unzip "$shared_data_path/$anamnesis_version.zip" -d "$shared_anamnesis_path"
-	echo """[Anamnesis.exe]
-d3d9.shaderModel = 1""" > "$shared_anamnesis_path/dxvk.conf"
+	unzip "$shared_data_path/Anamnesis.zip" -d "$shared_anamnesis_path"
+
 
 fi
 
